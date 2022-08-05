@@ -1,0 +1,4 @@
+<launch>
+  <node name="dist_viewer" pkg="self_driving_car_01" type="distance_viewer.py" output="screen"/>
+  <node name="image_viewer_node" pkg="self_driving_car_01" type="image_viewer.py" output="screen"/>
+</launch>
