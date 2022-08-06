@@ -14,17 +14,20 @@ obstacle_detector = Node('obstacle_detector_node')
 
 def obsatcle_detection_algorithm(msg: Range):
     distance = msg.range
+    result = Int8()
     if distance < settings.OBSTACLE_CLOSE_RANGE:
-        obstacle_detector.publish(obstacle_detector_publisher, settings.CLOSE_OBSTACLE)
+        result.data = settings.CLOSE_OBSTACLE
     elif settings.OBSTACLE_CLOSE_RANGE < distance < settings.OBSTACLE_MIDDLE_RANGE:
-        obstacle_detector.publish(obstacle_detector_publisher, settings.MIDDLE_OBSTACLE)
+        result.data = settings.MIDDLE_OBSTACLE
     else: 
-        obstacle_detector.publish(obstacle_detector_publisher, settings.FAR_OBSTACLE)
-        
+        result.data = settings.FAR_OBSTACLE
+    obstacle_detector.publish(obstacle_detector_publisher, result)
 
 def main():
     obstacle_detector.init_publisher(obstacle_detector_publisher, "/algo/obstacle", Int8)
-    obstacle_detector.init_subscriber(obstacle_detector_subscriber, "raspberry/data/distance", Range,)
+    obstacle_detector.init_subscriber(obstacle_detector_subscriber, "raspberry/data/distance", Range, 
+        obsatcle_detection_algorithm)
 
+    obstacle_detector.spin()
 
 main()
