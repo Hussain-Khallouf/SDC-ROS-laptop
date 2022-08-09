@@ -7,10 +7,35 @@ import numpy as np
 from node import Node
 
 
+##########drawing
+# cv2.line(
+#     image,
+#     (signed_thresh_From, start_height),
+#     (signed_thresh_To, start_height),
+#     (0, 255, 0),
+#     2,
+# )  # draw horizontal line where scanning
+# cv2.line(
+#     image, (width // 2, 0), (width // 2, height), (255, 0, 0), 2
+# )  # draw horizontal line where scanning
+
+# print((middle, start_height))
+# cv2.circle(
+#     image, (left + signed_thresh_From, start_height), 2, (255, 0, 0), -1
+# )
+# cv2.circle(
+#     image, (right + signed_thresh_From, start_height), 2, (255, 0, 0), -1
+# )
+# cv2.circle(image, (middle, start_height), 2, (0, 0, 255), -1)
+
+def raw_image(image):
+    cv.imshow("cv_img", image)
+
+
+
 def msg2view(msg: CompressedImage):
     decoded_image = decode_image(msg.data)
-    cv.imshow("cv_img", decoded_image)
-    cv.imwrite("a5.png", decoded_image)
+    raw_image(decoded_image)
     cv.waitKey(1)
 
 

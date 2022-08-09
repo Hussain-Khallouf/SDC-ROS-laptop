@@ -1,11 +1,12 @@
 #! /usr/bin/env python3
 
 from sensor_msgs.msg import CompressedImage
-from utils import decode_image
+from utils import decode_image, hsv_mask
 import cv2
 import numpy as np
 from node import Node
 
+localization_node = Node('localization_node')
 
 def region_of_interest(img, vertices, match_mask_color=255):
     mask = np.zeros_like(img)
@@ -31,13 +32,8 @@ def msg2view(msg: CompressedImage):
         np.array([region_of_interest_vertices], np.int32),
         match_mask_color=[255, 255, 255],
     )
-
-    hsv = cv2.cvtColor(cropped_image, cv2.COLOR_BGR2HSV)
-    lower = np.array([91, 130, 96])
-    uppeer = np.array([132, 255, 202])
-    mask = cv2.inRange(hsv, lower, uppeer)
+    mask = hsv_mask(cropped_image, np.array([91, 130, 96]), np.array([132, 255, 202]) )
     i = cv2.bitwise_and(cropped_image, cropped_image, mask=mask)
-
     contours, _ = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     if len(contours) > 0:
@@ -49,7 +45,6 @@ def msg2view(msg: CompressedImage):
         cv2.putText(
             image, f"{area}", (x, y - 10), cv2.FONT_HERSHEY_TRIPLEX, 0.7, (0, 0, 255), 2
         )
-
         if area > 1600:
             pass
 
@@ -59,16 +54,17 @@ def msg2view(msg: CompressedImage):
 
 
 def main():
-    image_viewer = Node("image_viewer_node")
-
-    image_viewer.init_subscriber(
+    # localization_node.init_publisher
+    localization_node.init_subscriber(
         "camera",
         "/raspberry/data/image",
         CompressedImage,
         callback=msg2view,
         buff_size=2**28,
     )
-    image_viewer.spin()
+
+
+    localization_node.spin()
 
 
 main()
