@@ -4,9 +4,11 @@
 from node import Node
 from sensor_msgs.msg import Range
 
+
 def view_dist(msg: Range):
-        print(f"The front distance is: {msg.range}")
-        
+    print(f"The front distance is: {msg.range}")
+
+
 def main():
     dist_node = Node("distance_viewer")
 
@@ -15,7 +17,6 @@ def main():
     )
 
     dist_node.spin()
-
 
 
 main()

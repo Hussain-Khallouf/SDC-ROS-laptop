@@ -8,8 +8,9 @@ from node import Node
 
 
 def msg2view(msg: CompressedImage):
-    decoded_image =decode_image (msg.data)
+    decoded_image = decode_image(msg.data)
     cv.imshow("cv_img", decoded_image)
+    cv.imwrite("a5.png", decoded_image)
     cv.waitKey(1)
 
 
@@ -17,6 +18,7 @@ def main():
     image_viewer = Node("image_viewer_node")
 
     image_viewer.init_subscriber(
+        "camera",
         "/raspberry/data/image",
         CompressedImage,
         callback=msg2view,

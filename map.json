@@ -1,0 +1,59 @@
+{
+    "nodesCount": 9,
+    "nodes": [
+        {
+            "name": "start",
+            "steering_angle": 90,
+            "next_nodes": ["1"],
+            "lane_keeping_assistant": true
+        },
+        {
+            "name": "1",
+            "steering_angle": 90,
+            "next_nodes": ["2", "7"],
+            "lane_keeping_assistant": true
+        },
+        {
+            "name": "2",
+            "steering_angle": 90,
+            "next_nodes": ["3"],
+            "lane_keeping_assistant": true
+        },
+        {
+            "name": "3",
+            "steering_angle": 90,
+            "next_nodes": ["4"],
+            "lane_keeping_assistant": false
+        },
+        {
+            "name": "4",
+            "steering_angle": 90,
+            "next_nodes": ["5"],
+            "lane_keeping_assistant": true
+        },
+        {
+            "name": "5",
+            "steering_angle": 90,
+            "next_nodes": ["6", "goal"],
+            "lane_keeping_assistant": true
+        },
+        {
+            "name": "6",
+            "steering_angle": 90,
+            "next_nodes": ["1"],
+            "lane_keeping_assistant": false
+        },
+        {
+            "name": "7",
+            "steering_angle": 90,
+            "next_nodes": ["5"],
+            "lane_keeping_assistant": false
+        },
+        {
+            "name": "goal",
+            "steering_angle": 90,
+            "next_nodes": [],
+            "lane_keeping_assistant": true
+        }
+    ]
+}
