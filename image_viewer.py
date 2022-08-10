@@ -30,8 +30,7 @@ from node import Node
 
 def raw_image(image):
     cv.imshow("cv_img", image)
-
-
+    cv.imwrite('a.png', image)
 
 def msg2view(msg: CompressedImage):
     decoded_image = decode_image(msg.data)

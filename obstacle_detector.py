@@ -1,4 +1,5 @@
-from dis import dis
+#! /usr/bin/env python3
+
 from node import Node
 from std_msgs.msg import Int8
 from sensor_msgs.msg import Range
@@ -15,11 +16,11 @@ def obsatcle_detection_algorithm(msg: Range):
     distance = msg.range
     result = Int8()
     if distance < settings.OBSTACLE_CLOSE_RANGE:
-        result.data = settings.CLOSE_OBSTACLE
+        result.data = settings.CLOSE_OBSTACLE_CODE
     elif settings.OBSTACLE_CLOSE_RANGE < distance < settings.OBSTACLE_MIDDLE_RANGE:
-        result.data = settings.MIDDLE_OBSTACLE
+        result.data = settings.MIDDLE_OBSTACLE_CODE
     else:
-        result.data = settings.FAR_OBSTACLE
+        result.data = settings.FAR_OBSTACLE_CODE
     obstacle_detector.publish(obstacle_detector_publisher, result)
 
 

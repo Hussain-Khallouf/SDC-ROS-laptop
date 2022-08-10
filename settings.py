@@ -1,7 +1,7 @@
 class Settings:
     # Variables
-    OBSTACLE_CLOSE_RANGE = 20
-    OBSTACLE_MIDDLE_RANGE = 50
+    OBSTACLE_CLOSE_RANGE = 10
+    OBSTACLE_MIDDLE_RANGE = 20
 
     # Engine commands
     STOP_ENGINE_COMMAND = "stop"
@@ -10,14 +10,25 @@ class Settings:
     RIGHT_ENGINE_COMMAND = "right"
 
     # The output of obstacle detection algorithm
-    FAR_OBSTACLE = 0
-    MIDDLE_OBSTACLE = 1
-    CLOSE_OBSTACLE = 2
+    FAR_OBSTACLE_CODE = 0
+    MIDDLE_OBSTACLE_CODE = 1
+    CLOSE_OBSTACLE_CODE = 2
+
+    # Lane Keeping Assistant
+    STRAIGHT = 0
+    LEFT_ANGLE = 1
+    RIGHT_ANGLE = 2
 
     # The output of traffic recognition algorithm
     NO_TRAFFIC = 0
     GREEN_TRAFFIC = 1
     RED_TRAFFIC = 2
 
+    # The output of road sign recognition algorithm
+    STOP_SIGN = 0
+
+
+    IMAGE_WIDTH = 640
+    IMAGE_HEIGHT = 360
 
 settings = Settings()

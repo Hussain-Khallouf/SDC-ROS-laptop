@@ -32,7 +32,7 @@ def msg2view(msg: CompressedImage):
         np.array([region_of_interest_vertices], np.int32),
         match_mask_color=[255, 255, 255],
     )
-    mask = hsv_mask(cropped_image, np.array([91, 130, 96]), np.array([132, 255, 202]) )
+    mask = hsv_mask(cropped_image, np.array([102, 195, 0]), np.array([172, 255, 255]) )
     i = cv2.bitwise_and(cropped_image, cropped_image, mask=mask)
     contours, _ = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
