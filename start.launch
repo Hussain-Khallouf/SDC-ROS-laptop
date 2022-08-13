@@ -1,3 +1,8 @@
 <launch>
+  <!-- <node name="lane_keeping_assistant_node" pkg="self_driving_car_01" type="lane_keeping_assistant.py" output="screen"/> -->
+  <node name="obstacle_detector_node" pkg="self_driving_car_01" type="obstacle_detector.py" output="screen"/>
+  <node name="localization_node" pkg="self_driving_car_01" type="localization.py" output="screen"/>
+  <!-- <node name="road_sign_node" pkg="self_driving_car_01" type="sign_detector.py" output="screen"/> -->
+  <!-- <node name="traffic_Light_node" pkg="self_driving_car_01" type="traffic_light_detector.py" output="screen"/> -->
   <node name="engine_node" pkg="self_driving_car_01" type="engine.py" output="screen"/>
 </launch>

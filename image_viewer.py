@@ -28,9 +28,11 @@ from node import Node
 # )
 # cv2.circle(image, (middle, start_height), 2, (0, 0, 255), -1)
 
+
 def raw_image(image):
     cv.imshow("cv_img", image)
-    cv.imwrite('a.png', image)
+    # cv.imwrite("a.png", image)
+
 
 def msg2view(msg: CompressedImage):
     decoded_image = decode_image(msg.data)

@@ -1,13 +1,14 @@
 class Settings:
     # Variables
-    OBSTACLE_CLOSE_RANGE = 10
-    OBSTACLE_MIDDLE_RANGE = 20
+    OBSTACLE_CLOSE_RANGE = 40
+    OBSTACLE_MIDDLE_RANGE = 60
 
     # Engine commands
     STOP_ENGINE_COMMAND = "stop"
     GO_ENGINE_COMMAND = "go"
     LEFT_ENGINE_COMMAND = "left"
     RIGHT_ENGINE_COMMAND = "right"
+    STEER_ENGINE_COMMAND = "steer{}"
 
     # The output of obstacle detection algorithm
     FAR_OBSTACLE_CODE = 0
@@ -19,6 +20,10 @@ class Settings:
     LEFT_ANGLE = 1
     RIGHT_ANGLE = 2
 
+    # Localization
+    MAX_AREA = 1000
+    MIN_AREA = 500
+
     # The output of traffic recognition algorithm
     NO_TRAFFIC = 0
     GREEN_TRAFFIC = 1
@@ -27,8 +32,8 @@ class Settings:
     # The output of road sign recognition algorithm
     STOP_SIGN = 0
 
-
     IMAGE_WIDTH = 640
     IMAGE_HEIGHT = 360
+
 
 settings = Settings()

@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 
 
-
 speed = 100
 angle_step = 2
 
@@ -13,12 +12,12 @@ commands = {
 }
 
 
-
 while True:
     import serial
-    i = input('intervalue')
+
+    i = input("intervalue")
     ArduinoSerial = serial.Serial("/dev/ttyACM0", 9600)
     ArduinoSerial.open()
     ArduinoSerial.reset_input_buffer()
-    ArduinoSerial.write(commands[i].encode('utf-8'))
+    ArduinoSerial.write(commands[i].encode("utf-8"))
     ArduinoSerial.close()
